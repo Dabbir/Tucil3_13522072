@@ -1,17 +1,13 @@
 package algorithms;
 
-import java.util.ArrayList;
 import java.util.Comparator;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
 import java.util.PriorityQueue;
 import java.util.Set;
 
 import dictionary.Dictionary;
-import nodes.Nodes;
-import nodes.Nodes.Node;
+import nodes.Nodes.*;
 
 public class GreedyBFS extends Algorithm {
   public GreedyBFS(String filename) {
@@ -26,8 +22,8 @@ public class GreedyBFS extends Algorithm {
     
     while (!frontier.isEmpty()) {
       Node currentNode = frontier.poll();
+      nodesExplored++;
       if (currentNode.getWord().equals(target.getWord())) {
-        System.out.println(explored.size() + " nodes explored");
         return constructPath(currentNode);
       }
       explored.add(currentNode.getWord());
@@ -37,7 +33,6 @@ public class GreedyBFS extends Algorithm {
           Node neighborNode = new Node(neighborWord, h(neighborWord, target.getWord()));
           neighborNode.setParent(currentNode);
           frontier.add(neighborNode);
-          explored.add(neighborWord);
         }
       }
       Node nextNode = frontier.poll();

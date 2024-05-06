@@ -2,7 +2,7 @@ import java.util.List;
 
 import algorithms.*;
 import nodes.Nodes;
-import nodes.Nodes.Node;
+import nodes.Nodes.*;
 import dictionary.Dictionary;
 
 public class Driver {
@@ -17,13 +17,10 @@ public class Driver {
     System.out.println("Start word: " + startWord.getWord());
     System.out.println("Target word: " + targetWord.getWord());
 
-    if (!dictionary.isContains(startWord.getWord()) || !dictionary.isContains(targetWord.getWord())) {
-      System.out.println("Start word or target word not in dictionary");
-      return;
-    }
     long startTime = System.currentTimeMillis();
     List<String> ladder = ucs.findPath(startWord, targetWord, dictionary);
     long endTime = System.currentTimeMillis();
+    System.out.println(Algorithm.nodesExplored + " nodes explored");
     if (ladder != null) {
       System.out.println("Path found: " + (ladder.size() - 1) + " steps\u001B[1m\u001B[31m");
       for (int i = 0; i < ladder.size(); i++) {
@@ -50,13 +47,10 @@ public class Driver {
     System.out.println("Start word: " + startWord.getWord());
     System.out.println("Target word: " + targetWord.getWord());
 
-    if (!dictionary.isContains(startWord.getWord()) || !dictionary.isContains(targetWord.getWord())) {
-      System.out.println("Start word or target word not in dictionary");
-      return;
-    }
     long startTime = System.currentTimeMillis();
     List<String> ladder = greedyBFS.findPath(startWord, targetWord, dictionary);
     long endTime = System.currentTimeMillis();
+    System.out.println(Algorithm.nodesExplored + " nodes explored");
     if (ladder != null) {
       System.out.println("Path found: " + (ladder.size() - 1) + " steps\u001B[1m\u001B[31m");
       for (int i = 0; i < ladder.size(); i++) {
@@ -83,13 +77,10 @@ public class Driver {
     System.out.println("Start word: " + startWord.getWord());
     System.out.println("Target word: " + targetWord.getWord());
 
-    if (!dictionary.isContains(startWord.getWord()) || !dictionary.isContains(targetWord.getWord())) {
-      System.out.println("Start word or target word not in dictionary");
-      return;
-    }
     long startTime = System.currentTimeMillis();
     List<String> ladder = aStar.findPath(startWord, targetWord, dictionary);
     long endTime = System.currentTimeMillis();
+    System.out.println(Algorithm.nodesExplored + " nodes explored");
     if (ladder != null) {
       System.out.println("Path found: " + (ladder.size() - 1) + " steps\u001B[1m\u001B[31m");
       for (int i = 0; i < ladder.size(); i++) {

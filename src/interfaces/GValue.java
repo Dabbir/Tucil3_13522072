@@ -1,6 +1,6 @@
-package algorithms;
+package interfaces;
 
-import nodes.Nodes.Node;
+import nodes.Nodes.*;
 
 public interface GValue {
   int g(Node word);

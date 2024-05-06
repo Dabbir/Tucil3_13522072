@@ -1,19 +1,17 @@
 package algorithms;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
 
-import algorithms.FunctionValue;
-import dictionary.Dictionary;
-import nodes.Nodes;
-import nodes.Nodes.Node;
+import dictionary.*;
+import nodes.Nodes.*;
+import interfaces.*;
 
 public abstract class Algorithm implements FunctionValue, GValue, HValue {
   private HashSet<String> dictionary;
+  public static int nodesExplored = 0;
 
   public Algorithm(String filename) {
     dictionary = new Dictionary(filename).getDictionary();

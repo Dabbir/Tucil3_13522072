@@ -2,16 +2,13 @@ package algorithms;
 
 import java.util.ArrayList;
 import java.util.Comparator;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
 import java.util.PriorityQueue;
 import java.util.Set;
 
 import dictionary.Dictionary;
-import nodes.Nodes;
-import nodes.Nodes.Node;
+import nodes.Nodes.*;
 
 public class AStar extends Algorithm {
   public AStar(String filename) {
@@ -26,15 +23,15 @@ public class AStar extends Algorithm {
     
     while (!frontier.isEmpty()) {
       Node currentNode = frontier.poll();
+      nodesExplored++;
       if (currentNode.getWord().equals(target.getWord())) {
-        System.out.println(explored.size() + " nodes explored");
         return constructPath(currentNode);
       }
       explored.add(currentNode.getWord()); 
       List<Node> neighborsNode = new ArrayList<>();
       List<String> neighbors = generateNeighbors(currentNode, dictionary);
       for (String neighborWord : neighbors) {
-        Node neighborNode = new Node(neighborWord, g(currentNode) + h(neighborWord, target.getWord()));
+        Node neighborNode = new Node(neighborWord, f(currentNode, target.getWord()) + 1);
         currentNode.addChild(neighborNode);
         neighborNode.setParent(currentNode);
         neighborsNode.add(neighborNode);

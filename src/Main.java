@@ -20,11 +20,12 @@ public class Main {
     System.out.println(ANSI_BOLD + ANSI_BLUE + "                          |___/ " + ANSI_RESET);
     System.out.println(ANSI_GREEN + "Welcome to Word Ladder Solver!" + ANSI_RESET);
 
+    @SuppressWarnings("resource")
     Scanner scanner = new Scanner(System.in);
     // System.out.println("Please select directory path for dictionary file");
     // System.out.print("Directory path: ");
     // String dictionary = scanner.nextLine();
-    String dictionary = "dictionary2.txt";
+    String dictionary = "dictionary.txt";
     
     // Read input from user
     System.out.print(ANSI_BOLD + ANSI_YELLOW + "Please enter the start word: " + ANSI_RESET);
