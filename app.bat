@@ -5,6 +5,7 @@ set NODES_DIR=%SRC_DIR%\nodes
 set DICTIONARY_DIR=%SRC_DIR%\dictionary
 set ALGORITHMS_DIR=%SRC_DIR%\algorithms
 set INTERFACE_DIR=%SRC_DIR%\interfaces
+set ERROR_DIR=%SRC_DIR%\error
 set CLASSPATH=%BIN_DIR%
 
 :: Buat folder bin jika belum ada
@@ -15,8 +16,8 @@ javac -d %BIN_DIR% %ALGORITHMS_DIR%\Algorithm.java %ALGORITHMS_DIR%\UCS.java %AL
 javac -d %BIN_DIR% %DICTIONARY_DIR%\Dictionary.java
 javac -d %BIN_DIR% %INTERFACE_DIR%\FunctionValue.java %INTERFACE_DIR%\GValue.java %INTERFACE_DIR%\HValue.java 
 javac -d %BIN_DIR% %NODES_DIR%\Nodes.java
-javac -d %BIN_DIR% %SRC_DIR%\Driver.java
-javac -d %BIN_DIR% %SRC_DIR%\Main.java
+javac -d %BIN_DIR% %ERROR_DIR%\Error.java
+javac -d %BIN_DIR% %SRC_DIR%\WordLadderApp.java
 
 :: Periksa exit code dari Java program
 if %ERRORLEVEL% NEQ 0 (
@@ -25,7 +26,4 @@ if %ERRORLEVEL% NEQ 0 (
 )
 
 :: Jalankan aplikasi Anda dari folder bin
-java -cp %CLASSPATH% Main
-
-:: Tunggu sebentar sebelum menutup jendela
-pause
+java -cp %CLASSPATH% WordLadderApp

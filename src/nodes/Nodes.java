@@ -34,10 +34,6 @@ public class Nodes {
       return cost;
     }
 
-    public void setCost(int cost) {
-      this.cost = cost;
-    }
-
     public Node getParent() {
       return parent;
     }

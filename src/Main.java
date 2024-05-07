@@ -22,10 +22,9 @@ public class Main {
 
     @SuppressWarnings("resource")
     Scanner scanner = new Scanner(System.in);
-    // System.out.println("Please select directory path for dictionary file");
-    // System.out.print("Directory path: ");
-    // String dictionary = scanner.nextLine();
-    String dictionary = "dictionary.txt";
+    System.out.println("Please select directory path for dictionary file (e.g. dictionary.txt)");
+    System.out.print("Directory path: ");
+    String dictionary = scanner.nextLine();
     
     // Read input from user
     System.out.print(ANSI_BOLD + ANSI_YELLOW + "Please enter the start word: " + ANSI_RESET);

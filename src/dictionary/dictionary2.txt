@@ -15156,7 +15156,6 @@ courant
 courante
 couranto
 courants
-coure
 courier
 couriers
 courlan
@@ -15766,7 +15765,6 @@ crippled
 crippler
 cripples
 cris
-crise
 crises
 crisic
 crisis
