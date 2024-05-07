@@ -1,3 +1,4 @@
+import java.io.File;
 import java.util.Scanner;
 
 public class Main {
@@ -8,7 +9,7 @@ public class Main {
   public static final String ANSI_YELLOW = "\u001B[33m";
   public static final String ANSI_BLUE = "\u001B[34m";
   public static final String ANSI_BOLD = "\u001B[1m";
-  
+
   public static void main(String[] args) {
     System.out.println(ANSI_BOLD + ANSI_BLUE + "  _____           _     _       " + ANSI_RESET);
     System.out.println(ANSI_BOLD + ANSI_BLUE + " |  __ \\         | |   | |      " + ANSI_RESET);
@@ -22,17 +23,33 @@ public class Main {
 
     @SuppressWarnings("resource")
     Scanner scanner = new Scanner(System.in);
-    System.out.println("Please select directory path for dictionary file (e.g. dictionary.txt)");
+    System.out.println("Please select directory path for dictionary file");
     System.out.print("Directory path: ");
     String dictionary = scanner.nextLine();
-    
+    while (dictionary.isEmpty()) {
+      System.out.println(ANSI_BOLD + ANSI_RED + "Directory path cannot be empty" + ANSI_RESET);
+      System.out.print("Directory path: ");
+      dictionary = scanner.nextLine();
+    }
+
+    File file = new File("src/dictionary/" + dictionary);
+    while (!file.exists()) {
+      System.out.println(ANSI_BOLD + ANSI_RED + "File not found" + ANSI_RESET);
+      System.out.print("Directory path: ");
+      dictionary = scanner.nextLine();
+      if (!dictionary.endsWith(".txt")) {
+        dictionary += ".txt";
+      }
+      file = new File("src/dictionary/" + dictionary);
+    }
+
     // Read input from user
     System.out.print(ANSI_BOLD + ANSI_YELLOW + "Please enter the start word: " + ANSI_RESET);
     String start = scanner.nextLine();
     System.out.print(ANSI_BOLD + ANSI_YELLOW + "Please enter the end word: " + ANSI_RESET);
     String target = scanner.nextLine();
 
-    while(start.length() != target.length()) {
+    while (start.length() != target.length()) {
       System.out.println(ANSI_BOLD + ANSI_RED + "Start and target words must be of the same length" + ANSI_RESET);
       System.out.print(ANSI_BOLD + ANSI_YELLOW + "Please enter the start word: " + ANSI_RESET);
       start = scanner.nextLine();
@@ -44,12 +61,12 @@ public class Main {
     System.out.println("1. UCS");
     System.out.println("2. Greedy Best First Search");
     System.out.println("3. A*");
-    
+
     // Perform word ladder solving here
     System.out.print("Pilihan: ");
     int choice = scanner.nextInt();
 
-    switch(choice) {
+    switch (choice) {
       case 1:
         Driver driver = new Driver();
         driver.DriverUCS(start.toUpperCase(), target.toUpperCase(), dictionary);
@@ -65,6 +82,5 @@ public class Main {
       default:
         System.out.println("Pilihan tidak valid");
     }
-
   }
 }
